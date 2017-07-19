@@ -1,0 +1,38 @@
+textarea {
+    min-height: 110px;
+}
+
+img {
+    width: 250px;
+}
+
+h1, .lead {
+    font-family: 'Architects Daughter', cursive;
+}
+
+input[type="text"], textarea {
+    border: 1px solid #555 !important;
+}
+
+.mosaic {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.mosaic .comment {
+    margin: 5px;
+    border: 1px solid #555;
+}
+
+.write-zone-container {
+    border-bottom: 1px solid #555;
+}
+
+.write-banner {
+    border-top: 1px solid #555;
+    background-color: #000;
+    color: #FFF;
+    cursor: pointer;
+}
