@@ -57,7 +57,7 @@
             <div class="header py-5">
                 <div class="row">
                     <div class="col-8 col-md-5 mx-auto text-center pb-5">
-                        <img src="assets/prout-club.png" class="img-fluid" style="" />
+                        <img src="assets/prout-club.png" class="img-fluid logo" style="" />
                     </div>
                 </div>
                 <div class="row">
@@ -68,8 +68,8 @@
                 </div>
             </div>
         </div>
-        <div class="mb-5 write-zone-container">
-          <div class="write-banner text-center p-2 lead">ECRIRE UN MOT</div>
+        <div class="write-zone-container">
+          <div class="write-banner text-center p-2 lead w-50 mx-auto">ECRIRE UN MOT</div>
           <div class="container form-container hidden-xs-up">
               <div class="my-5">
                   <form class="form-inline" action="">
@@ -82,12 +82,25 @@
               </div>
           </div>
         </div>
-        <div class="container-fluid pb-5">
+        <div class="container-fluid mosaic-container py-5">
             <div id="mosaic" class="mosaic"></div>
         </div>
+        <div class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script>
             $('form').submit(function (e) {
                 e.preventDefault();
@@ -98,21 +111,46 @@
                 var username = usernameField.val();
                 if (commenttxt != "" && username != "") {
                     writeComment(username, commenttxt);
+                    usernameField.val('');
+                    txtarea.val('');
                     if ($('.alert').length) {
                         $('.alert').remove();
                     }
-                    usernameField.val('');
-                    txtarea.val('');
+                    $('<div class="alert alert-success">Tooop...</div>').insertBefore('form');
+                    playProut();
                 } else {
-                    if (!$('.alert').length) {
-                        $('<div class="alert alert-warning">Veuillez compléter le formulaire !</div>').insertBefore('form');
+                    if ($('.alert').length) {
+                        $('.alert').remove();
                     }
+                    playPascal();
+                    $('<div class="alert alert-warning">Mais enfin c\'est ridicule, veuillez compléter le formulaire !</div>').insertBefore('form');
                 }
             });
 
             $('.write-banner').click(function () {
                 $('.form-container').toggleClass('hidden-xs-up');
             });
+            $('.logo').click(function () {
+                playProut();
+            });
+            $('.mosaic').on('click', '.card', function () {
+                $('.modal').find('.modal-body').html($(this).html());
+                $('.modal').modal('show');
+                playProut();
+            });
         </script>
+
+        <script>
+            function playProut(){
+                var audio = document.getElementById("audio_prout");
+                audio.play();
+            }
+            function playPascal(){
+                var audio = document.getElementById("audio_pascal");
+                audio.play();
+            }
+        </script>
+        <audio id="audio_prout" src="assets/prout.m4a" ></audio>
+        <audio id="audio_pascal" src="assets/pascal.mp3" ></audio>
     </body>
 </html>
