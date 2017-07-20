@@ -8,11 +8,12 @@ body {
     border-color: #ef7b77;
 }
 
-btn-primary:hover {
+.btn-primary:hover {
     color: #fff;
     background-color: #ef7b77;
     border-color: #ef7b77;
 }
+
 
 .mosaic-container {
     background-color: #f7eeee;
@@ -46,7 +47,7 @@ input[type="text"], textarea {
 }
 
 .mosaic .comment {
-    margin: 5px;
+    margin: 15px;
     border: 1px solid #555;
 }
 
