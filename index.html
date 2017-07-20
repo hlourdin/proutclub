@@ -45,6 +45,7 @@
             var database = firebase.database();
             var leadsRef = database.ref('comments');
             leadsRef.on('value', function (snapshot) {
+                $('.mosaic').html('');
                 snapshot.forEach(function (childSnapshot) {
                     var childData = childSnapshot.val();
                     buildCommentBox(childData);
