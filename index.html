@@ -27,7 +27,7 @@
                 var commentBox = document.createElement('div');
                 var cardMarkup = '<div class="card-block">';
                 //cardMarkup += '<div class-"card-title">' + commentData.username + '</div>';
-                cardMarkup += '<div class="card-text">' + commentData.comment.replace('\n', '<br/>') + '<div class="mt-2 font-weight-bold">' + commentData.username + '</div></div>';
+                cardMarkup += '<div class="card-text">' + commentData.comment.replace(/[\n\r]/gm, '<br/>') + '<div class="mt-2 font-weight-bold">' + commentData.username + '</div></div>';
                 cardMarkup += '</div>';
                 commentBox.setAttribute('class', "card comment");
                 commentBox.innerHTML = cardMarkup;
